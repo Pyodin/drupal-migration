@@ -1,0 +1,15 @@
+apiVersion: projectcontour.io/v1
+kind: HTTPProxy
+metadata:
+  name: infra-drupal
+  namespace: infra-drupal
+spec:
+  virtualhost:
+    fqdn: infra-drupal.almacg.com
+    tls:
+      secretName: infra-drupal-tls
+  routes:
+    - services:
+        - name: infra-drupal
+          port: 80
+      conditions:
